@@ -1,0 +1,3 @@
+[submodule "libtar"]
+	path = libtar
+	url = https://github.com/stainless-steel/libtar
