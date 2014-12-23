@@ -9,7 +9,7 @@ use libc::{c_char, c_int, c_long, c_void};
 // https://github.com/stainless-steel/libtar/blob/master/lib/libtar.h
 
 #[repr(C)]
-#[allow(dead_code)]
+#[allow(dead_code, missing_copy_implementations)]
 pub struct tar_header {
     name: [c_char, ..100],
     mode: [c_char, ..8],
