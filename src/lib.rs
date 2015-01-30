@@ -2,7 +2,8 @@
 //!
 //! [1]: http://www.feep.net/libtar/
 
-#[allow(unstable)]
+#![feature(libc)]
+
 extern crate libc;
 
 use libc::{c_char, c_int, c_long, c_void};

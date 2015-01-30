@@ -1,25 +1,28 @@
-#![allow(unstable)]
+#![feature(io, path)]
+
+use std::old_io as io;
+use std::os;
 
 macro_rules! cmd(
-    ($name:expr) => (::std::io::process::Command::new($name));
+    ($name:expr) => (io::process::Command::new($name));
 );
 
 macro_rules! fmt(
-    ($($arg:tt)*) => (format!($($arg)*).as_slice());
+    ($($arg:tt)*) => (&format!($($arg)*)[]);
 );
 
 macro_rules! get(
-    ($name:expr) => (::std::os::getenv($name).unwrap_or("".to_string()));
+    ($name:expr) => (os::getenv($name).unwrap_or("".to_string()));
 );
 
 macro_rules! set(
-    ($name:expr, $value:expr) => (::std::os::setenv($name, $value));
+    ($name:expr, $value:expr) => (os::setenv($name, $value));
 );
 
 macro_rules! run(
     ($command:expr) => (
-        assert!($command.stdout(::std::io::process::InheritFd(1))
-                        .stderr(::std::io::process::InheritFd(2))
+        assert!($command.stdout(io::process::InheritFd(1))
+                        .stderr(io::process::InheritFd(2))
                         .status().unwrap().success());
     );
 );
