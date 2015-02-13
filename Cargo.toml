@@ -1,6 +1,6 @@
 [package]
 name = "libtar-sys"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
 license = "MIT"
 repository = "https://github.com/stainless-steel/libtar-sys"
@@ -8,3 +8,6 @@ homepage = "https://github.com/stainless-steel/libtar-sys"
 description = "The library facilitates static linking with libtar."
 links = "tar"
 build = "build.rs"
+
+[dependencies]
+libc = "*"
