@@ -1,4 +1,4 @@
-//! Facilitation of static linking with [libtar][1].
+//! Static linking with [libtar][1].
 //!
 //! [1]: http://www.feep.net/libtar/
 

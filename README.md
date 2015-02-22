@@ -1,6 +1,6 @@
 # libtar-sys
 
-The library facilitates static linking with [libtar][1].
+The package facilitates static linking with [libtar][1].
 
 ## Contributing
 
