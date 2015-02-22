@@ -1,18 +1,14 @@
-#![feature(env, old_io, old_path)]
+#![feature(env, path, process)]
 
-use std::old_io as io;
-use std::env;
+use std::{env, process};
+use std::path::PathBuf;
 
 macro_rules! cmd(
-    ($name:expr) => (io::process::Command::new($name));
-);
-
-macro_rules! fmt(
-    ($($arg:tt)*) => (&format!($($arg)*)[..]);
+    ($name:expr) => (process::Command::new($name));
 );
 
 macro_rules! get(
-    ($name:expr) => (env::var($name).unwrap_or("".to_string()));
+    ($name:expr) => (env::var($name).unwrap_or(String::new()));
 );
 
 macro_rules! set(
@@ -21,20 +17,20 @@ macro_rules! set(
 
 macro_rules! run(
     ($command:expr) => (
-        assert!($command.stdout(io::process::InheritFd(1))
-                        .stderr(io::process::InheritFd(2))
+        assert!($command.stdout(process::Stdio::inherit())
+                        .stderr(process::Stdio::inherit())
                         .status().unwrap().success());
     );
 );
 
 fn main() {
-    let from = Path::new(get!("CARGO_MANIFEST_DIR")).join("libtar");
-    let into = Path::new(get!("OUT_DIR"));
+    let from = PathBuf::new(&get!("CARGO_MANIFEST_DIR")).join("libtar");
+    let into = PathBuf::new(&get!("OUT_DIR"));
 
-    set!("CFLAGS", fmt!("{} -fPIC", get!("CFLAGS")));
+    set!("CFLAGS", &format!("{} -fPIC", get!("CFLAGS")));
 
-    run!(cmd!(from.join("configure")).cwd(&into).arg("--srcdir").arg(&from));
-    run!(cmd!("make").cwd(&into).arg(fmt!("-j{}", get!("NUM_JOBS"))));
+    run!(cmd!(&from.join("configure")).current_dir(&into).arg("--srcdir").arg(&from));
+    run!(cmd!("make").current_dir(&into).arg(&format!("-j{}", get!("NUM_JOBS"))));
 
     println!("cargo:rustc-flags=-L {}", into.join("lib").display());
     println!("cargo:rustc-flags=-l tar:static");
