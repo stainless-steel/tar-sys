@@ -1,4 +1,4 @@
-#![feature(env, path, process)]
+#![feature(convert)]
 
 use std::{env, process};
 use std::path::PathBuf;
@@ -24,8 +24,8 @@ macro_rules! run(
 );
 
 fn main() {
-    let from = PathBuf::new(&get!("CARGO_MANIFEST_DIR")).join("libtar");
-    let into = PathBuf::new(&get!("OUT_DIR"));
+    let from = PathBuf::from(&get!("CARGO_MANIFEST_DIR")).join("libtar");
+    let into = PathBuf::from(&get!("OUT_DIR"));
 
     set!("CFLAGS", &format!("{} -fPIC", get!("CFLAGS")));
 
