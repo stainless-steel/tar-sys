@@ -32,6 +32,6 @@ fn main() {
     run!(cmd!(&from.join("configure")).current_dir(&into).arg("--srcdir").arg(&from));
     run!(cmd!("make").current_dir(&into).arg(&format!("-j{}", get!("NUM_JOBS"))));
 
-    println!("cargo:rustc-flags=-L {}", into.join("lib").display());
-    println!("cargo:rustc-flags=-l tar:static");
+    println!("cargo:rustc-link-search=native={}", into.join("lib").display());
+    println!("cargo:rustc-link-lib=static=tar");
 }
