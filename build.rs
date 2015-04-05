@@ -1,5 +1,3 @@
-#![feature(convert)]
-
 use std::{env, process};
 use std::path::PathBuf;
 
@@ -32,6 +30,6 @@ fn main() {
     run!(cmd!(&from.join("configure")).current_dir(&into).arg("--srcdir").arg(&from));
     run!(cmd!("make").current_dir(&into).arg(&format!("-j{}", get!("NUM_JOBS"))));
 
-    println!("cargo:rustc-link-search=native={}", into.join("lib").display());
+    println!("cargo:rustc-link-search={}", into.join("lib").display());
     println!("cargo:rustc-link-lib=static=tar");
 }
