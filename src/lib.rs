@@ -1,4 +1,4 @@
-//! Static linking to [libtar][1].
+//! Bindings to [libtar][1].
 //!
 //! [1]: http://www.feep.net/libtar
 

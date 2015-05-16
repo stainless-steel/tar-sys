@@ -1,6 +1,6 @@
 # tar-sys
 
-The package facilitates static linking to [libtar][1].
+The package provides bindings to [libtar][1].
 
 ## Contributing
 
