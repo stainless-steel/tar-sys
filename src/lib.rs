@@ -1,6 +1,6 @@
-//! Static linking with [libtar][1].
+//! Static linking to [libtar][1].
 //!
-//! [1]: http://www.feep.net/libtar/
+//! [1]: http://www.feep.net/libtar
 
 extern crate libc;
 

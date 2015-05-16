@@ -1,11 +1,11 @@
 [package]
-name = "libtar-sys"
-version = "0.1.9"
+name = "tar-sys"
+version = "0.2.0"
 authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
 license = "MIT"
-repository = "https://github.com/stainless-steel/libtar-sys"
-homepage = "https://github.com/stainless-steel/libtar-sys"
-description = "The package facilitates static linking with libtar."
+repository = "https://github.com/stainless-steel/tar-sys"
+homepage = "https://github.com/stainless-steel/tar-sys"
+description = "The package facilitates static linking to libtar."
 links = "tar"
 build = "build.rs"
 
