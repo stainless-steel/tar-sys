@@ -22,14 +22,14 @@ macro_rules! run(
 );
 
 fn main() {
-    let from = PathBuf::from(&get!("CARGO_MANIFEST_DIR")).join("libtar");
-    let into = PathBuf::from(&get!("OUT_DIR"));
+    let source = PathBuf::from(&get!("CARGO_MANIFEST_DIR")).join("source");
+    let output = PathBuf::from(&get!("OUT_DIR"));
 
     set!("CFLAGS", &format!("{} -fPIC", get!("CFLAGS")));
 
-    run!(cmd!(&from.join("configure")).current_dir(&into).arg("--srcdir").arg(&from));
-    run!(cmd!("make").current_dir(&into).arg(&format!("-j{}", get!("NUM_JOBS"))));
+    run!(cmd!(&source.join("configure")).current_dir(&output).arg("--srcdir").arg(&source));
+    run!(cmd!("make").current_dir(&output).arg(&format!("-j{}", get!("NUM_JOBS"))));
 
-    println!("cargo:rustc-link-search={}", into.join("lib").display());
+    println!("cargo:rustc-link-search={}", output.join("lib").display());
     println!("cargo:rustc-link-lib=static=tar");
 }
