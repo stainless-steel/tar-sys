@@ -18,7 +18,7 @@ pub struct tar_header {
     size: [c_char; 12],
     mtime: [c_char; 12],
     chksum: [c_char; 8],
-    typeflag: char,
+    typeflag: c_char,
     linkname: [c_char; 100],
     magic: [c_char; 6],
     version: [c_char; 2],
@@ -28,8 +28,8 @@ pub struct tar_header {
     devminor: [c_char; 8],
     prefix: [c_char; 155],
     padding: [c_char; 12],
-    gnu_longname: *mut char,
-    gnu_longlink: *mut char,
+    gnu_longname: *mut c_char,
+    gnu_longlink: *mut c_char,
 }
 
 #[repr(C)]
