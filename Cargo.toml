@@ -1,6 +1,6 @@
 [package]
 name = "tar-sys"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
 license = "MIT"
 repository = "https://github.com/stainless-steel/tar-sys"
@@ -10,4 +10,4 @@ links = "tar"
 build = "build.rs"
 
 [dependencies]
-libc = "*"
+libc = "0.2"
