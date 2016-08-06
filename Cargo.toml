@@ -1,13 +1,13 @@
 [package]
 name = "tar-sys"
-version = "0.2.2"
+version = "0.3.0"
+license = "Apache-2.0/MIT"
 authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
-license = "MIT"
-repository = "https://github.com/stainless-steel/tar-sys"
-homepage = "https://github.com/stainless-steel/tar-sys"
 description = "The package provides bindings to libtar."
-links = "tar"
+homepage = "https://github.com/stainless-steel/tar-sys"
+repository = "https://github.com/stainless-steel/tar-sys"
 build = "build.rs"
+links = "tar"
 
 [dependencies]
 libc = "0.2"
